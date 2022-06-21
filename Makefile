@@ -1,17 +1,17 @@
 .DEFAULT_GOAL := build
-fmt:
-    go fmt ./...
+fmt: 
+	go fmt ./...
 .PHONY:fmt
 lint: fmt
-    golint ./...
+	golint ./...
 .PHONY:lint
 vet: fmt
-    go vet ./...
+	go vet ./...
 .PHONY:vet
-    Makefiles |
+	Makefiles |
 lint-ci:
-    golangci-lint run
+	golangci-lint run
 .PHONY:lint-ci
 build: vet
-    go build hello.go
+	go build hello.go
 .PHONY:build
