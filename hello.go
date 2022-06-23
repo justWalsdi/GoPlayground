@@ -22,4 +22,5 @@ func arrayDeclaration() {
 	fmt.Println("Array created using ...", y)
 	y[2] = 4
 	fmt.Println("Changing variable with indexes", y)
+	fmt.Println("Length func", len(y))
 }
