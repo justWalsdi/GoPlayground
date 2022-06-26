@@ -8,6 +8,7 @@ func main() {
 	explicitConversion()
 	arrayDeclaration()
 	slices()
+	fibinocci_wrapper(15)
 }
 
 func explicitConversion() {
@@ -45,4 +46,19 @@ func slices() {
 	fmt.Println("Empty zero initialized slice:", z, "size and cap:", len(z), cap(z))
 	w := make([]int, 5, 10) // to make capacity 10 at the start
 	fmt.Println("Empty zero initialized slice:", w, "size and cap are different:", len(w), cap(w))
+}
+
+func fibinocci_of(n int) int {
+	if n == 0 || n == 1 {
+		return n
+	}
+
+	return fibinocci_of(n-1) + fibinocci_of(n-2)
+}
+
+func fibinocci_wrapper(amount int) {
+	fmt.Println("Fibonacci sequence:")
+	for i := 0; i < amount; i++ {
+		fmt.Print(fibinocci_of(i), " ")
+	}
 }
