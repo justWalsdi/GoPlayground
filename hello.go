@@ -52,7 +52,6 @@ func fibinocci_of(n int) int {
 	if n == 0 || n == 1 {
 		return n
 	}
-
 	return fibinocci_of(n-1) + fibinocci_of(n-2)
 }
 
