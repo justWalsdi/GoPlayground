@@ -11,6 +11,7 @@ func main() {
 	slices()
 	fibonacci_wrapper(15)
 	errWrapper()
+	maps()
 }
 
 func explicitConversion() {
@@ -85,9 +86,36 @@ func errWrapper() {
 
 	result, err = err_examplePlusPlus(-10)
 	if err != nil {
-		panic("Well the number is in fact below zero")
+		//panic("Well the number is in fact below zero")
 	}
-	fmt.Printf("Result 2 is: %d\n", result)
+	//fmt.Printf("Result 2 is: %d\n", result)
 
 	fmt.Println("This statement can't be reached.")
+}
+
+func maps() {
+	//var mapName map[keyType]valueType
+	var justSomeMap map[string]string
+	justSomeMap = make(map[string]string, 2)
+	justSomeMap["Hello"] = "world"
+	justSomeMap["Hey"] = "partner"
+	fmt.Println("Maps:", justSomeMap)
+
+	justWalrusMap := make(map[int]string, 2)
+	justWalrusMap[324] = "well well well"
+	justWalrusMap[283] = "what the fuck is this"
+	fmt.Println("Maps 2:", justWalrusMap)
+
+	justMap := map[string]string{
+		"hey":   "tony",
+		"hello": "dad",
+		"heyyy": "drunk",
+	}
+	fmt.Println("Maps 3:", justMap)
+
+	example, exists := justMap["heyf"]
+	fmt.Println("Example heyf:", example, "\nIs it exist:", exists)
+
+	delete(justMap, "heyyy")
+	fmt.Println("Maps 4, deleted elem heyyy:", justMap)
 }
