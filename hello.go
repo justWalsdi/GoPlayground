@@ -149,4 +149,10 @@ func structExample() {
 	}
 
 	fmt.Println("Student Josh:", studentExample)
+	studentExample.printInfo()
+}
+
+func (s student) printInfo() student {
+	fmt.Printf("Name: %s\nSex: %s\nHeight: %.2f", s.name, s.sex, s.height)
+	return s
 }
