@@ -5,11 +5,15 @@ import (
 	"fmt"
 )
 
+// somewhat a class
 type student struct {
 	name   string
 	sex    string
 	height float32
 }
+
+// now age is int, can be returned inside of a function
+type age int
 
 func main() {
 	explicitConversion()
@@ -150,9 +154,17 @@ func structExample() {
 
 	fmt.Println("Student Josh:", studentExample)
 	studentExample.printInfo()
+	studentExample.setName("Mark").printInfo()
 }
 
 func (s student) printInfo() student {
-	fmt.Printf("Name: %s\nSex: %s\nHeight: %.2f", s.name, s.sex, s.height)
+	fmt.Printf("Name: %s\nSex: %s\nHeight: %.2f\n", s.name, s.sex, s.height)
+	return s
+}
+
+func (s *student) setName(name string) *student {
+	if name != "" {
+		s.name = name
+	}
 	return s
 }
