@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -9,6 +10,7 @@ func main() {
 	arrayDeclaration()
 	slices()
 	fibonacci_wrapper(15)
+	errWrapper()
 }
 
 func explicitConversion() {
@@ -60,4 +62,32 @@ func fibonacci_wrapper(amount int) {
 	for i := 0; i < amount; i++ {
 		fmt.Print(fibonacci_of(i), " ")
 	}
+	fmt.Print("\n")
+}
+
+func err_examplePlusPlus(numberBelowZero int) (int, error) {
+	if numberBelowZero < 0 {
+		return int(0), errors.New("Number is below zero!")
+	}
+	numberBelowZero++
+	return numberBelowZero, nil
+}
+
+func errWrapper() {
+	var result int
+	var err error
+
+	result, err = err_examplePlusPlus(10)
+	if err != nil {
+		panic("Well the number is in fact below zero")
+	}
+	fmt.Printf("Result 1 is: %d\n", result)
+
+	result, err = err_examplePlusPlus(-10)
+	if err != nil {
+		panic("Well the number is in fact below zero")
+	}
+	fmt.Printf("Result 2 is: %d\n", result)
+
+	fmt.Println("This statement can't be reached.")
 }
