@@ -168,3 +168,45 @@ func (s *student) setName(name string) *student {
 	}
 	return s
 }
+
+type employee struct {
+	id     int
+	name   string
+	age    int
+	salary int
+}
+
+type storage interface {
+	insert(e employee) error
+	get(id int) (employee, error)
+	delete(id int) error
+}
+
+type memoryStorage struct {
+	data map[int]employee
+}
+
+func newMemoryStorage() *memoryStorage {
+	return &memoryStorage{
+		data: make(map[int]employee),
+	}
+}
+
+func (s *memoryStorage) insert(e employee) error {
+	s.data[e.id] = e
+	return nil
+}
+
+func (s *memoryStorage) get(id int) (employee, error) {
+	e, exists := s.data[id]
+	if !exists {
+		return employee{}, errors.New("Employee does not exist.")
+	}
+
+	return e, nil
+}
+
+func (s *memoryStorage) delete(id int) error {
+	delete(s.data, id)
+	return nil
+}
