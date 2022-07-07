@@ -5,6 +5,12 @@ import (
 	"fmt"
 )
 
+type student struct {
+	name   string
+	sex    string
+	height float32
+}
+
 func main() {
 	explicitConversion()
 	arrayDeclaration()
@@ -12,6 +18,7 @@ func main() {
 	fibonacci_wrapper(15)
 	errWrapper()
 	maps()
+	structExample()
 }
 
 func explicitConversion() {
@@ -118,4 +125,28 @@ func maps() {
 
 	delete(justMap, "heyyy")
 	fmt.Println("Maps 4, deleted elem heyyy:", justMap)
+}
+
+func structExample() {
+	human := struct {
+		name   string
+		age    int
+		salary uint
+		height float32
+	}{
+		name:   "garry",
+		age:    18,
+		salary: 18000,
+		height: 1.71,
+	}
+
+	fmt.Println("Human type:", human)
+
+	studentExample := student{
+		name:   "Josh",
+		sex:    "M",
+		height: 1.71,
+	}
+
+	fmt.Println("Student Josh:", studentExample)
 }
